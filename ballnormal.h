@@ -7,8 +7,8 @@
 class BallNormal : public Ball
 {
 public:
-    explicit BallNormal(qreal x, qreal y, qreal w, qreal h, int points, QGraphicsItem *parent = 0,
-                  QGraphicsScene *scene = 0, const QPen & pen = QPen(), const QBrush & brush = QBrush());
+    explicit BallNormal(qreal x, qreal y, qreal w, qreal h, int myColor, int points, QGraphicsScene *scene=0,
+                  const QPen & pen = QPen(), const QBrush & brush = QBrush());
     bool isColor(QColor color);
     int sumPoints();
     int timesPoints();

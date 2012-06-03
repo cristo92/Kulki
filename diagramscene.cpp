@@ -5,13 +5,16 @@ DiagramScene::DiagramScene(QObject *parent, qint32 n, qint32 k) :
 {
     createColors();
     moving=false;
+    pastEllipse=NULL;
     this->setSceneRect(0,0,n*(RKULKI*2+ODLKULKI),n*(RKULKI*2+ODLKULKI));
     double X=ODLKULKI;
     double Y=ODLKULKI;
+    int nrOfColor;
     for(int i=0; i<n; i++, X+=RKULKI*2+ODLKULKI) {
         Y=ODLKULKI;
         for(int j=0; j<n; j++, Y+=RKULKI*2+ODLKULKI) {
-            this->addEllipse(X,Y,RKULKI*2,RKULKI*2,QPen(),QBrush(colors[rand()%k]))->setActive(true);
+            nrOfColor=rand()%k;
+            this->addItem(new BallNormal(X,Y,RKULKI*2,RKULKI*2,nrOfColor,nrOfColor+1,this,QPen(),QBrush(colors[nrOfColor])));//->setActive(true);
         }
     }
 }
@@ -36,23 +39,34 @@ void DiagramScene::createColors()
 
 void DiagramScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QGraphicsEllipseItem *ellipse = dynamic_cast<QGraphicsEllipseItem*>(this->itemAt(event->scenePos()));
+    Ball *ellipse = dynamic_cast<Ball*>(this->itemAt(event->scenePos()));
     if(ellipse==NULL) {
+        moving=false;
+        if(pastEllipse!=NULL) {
+            pastEllipse->lighten();
+            this->update(pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
+        }
         qDebug() << "There is no ball";
         return;
     }
     update(ellipse->scenePos().x(),ellipse->scenePos().y(),RKULKI,RKULKI);
     if(moving) {
+        pastEllipse->lighten();
+        this->update(pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
         swap(ellipse,pastEllipse);
         moving=false;
     }
     else {
+        qDebug() << "darking";
         pastEllipse=ellipse;
+        pastEllipse->darken();
+        //pastEllipse->setBrush(QBrush(Qt::black));
+        this->update();//pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
         moving=true;
     }
 }
 
-void DiagramScene::swap(QAbstractGraphicsShapeItem *ellipse1, QAbstractGraphicsShapeItem *ellipse2)
+void DiagramScene::swap(Ball *ellipse1, Ball *ellipse2)
 {
     qDebug() << "swapuje" << ellipse1->scenePos().x() << "," << ellipse1->scenePos().y() << " " << ellipse2->scenePos().x()
              << "," << ellipse2->scenePos().y();

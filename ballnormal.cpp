@@ -1,8 +1,8 @@
 #include "ballnormal.h"
 
-BallNormal::BallNormal(qreal x, qreal y, qreal w, qreal h, int points, QGraphicsItem *parent, QGraphicsScene *scene,
+BallNormal::BallNormal(qreal x, qreal y, qreal w, qreal h, int myColor, int points, QGraphicsScene *scene,
            const QPen &pen, const QBrush &brush):
-    Ball(x,y,w,h,parent,scene,pen,brush), points(points)
+    Ball(x,y,w,h,myColor,scene,pen,brush), points(points)
 {
 
 }
