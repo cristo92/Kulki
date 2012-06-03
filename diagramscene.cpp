@@ -3,9 +3,10 @@
 DiagramScene::DiagramScene(QObject *parent, qint32 n, qint32 k) :
     QGraphicsScene(parent), n(n), k(k)
 {
-    createColors();
-    moving=false;
-    pastEllipse=NULL;
+    createPixmaps();
+    sceneMode=false;
+    firstEllipse=NULL;
+    secondEllipse=NULL;
     this->setSceneRect(0,0,n*(RKULKI*2+ODLKULKI),n*(RKULKI*2+ODLKULKI));
     double X=ODLKULKI;
     double Y=ODLKULKI;
@@ -14,65 +15,69 @@ DiagramScene::DiagramScene(QObject *parent, qint32 n, qint32 k) :
         Y=ODLKULKI;
         for(int j=0; j<n; j++, Y+=RKULKI*2+ODLKULKI) {
             nrOfColor=rand()%k;
-            this->addItem(new BallNormal(X,Y,RKULKI*2,RKULKI*2,nrOfColor,nrOfColor+1,this,QPen(),QBrush(colors[nrOfColor])));//->setActive(true);
+            new BallNormal(X,Y,RKULKI*2,RKULKI*2,nrOfColor,nrOfColor+1,pixmaps[nrOfColor],this);//->setActive(true);
         }
     }
-}
-
-void DiagramScene::createColors()
-{
-    colors.push_back(Qt::red);
-    colors.push_back(Qt::green);
-    colors.push_back(Qt::blue);
-    colors.push_back(Qt::yellow);
-    colors.push_back(Qt::magenta);
-    colors.push_back(Qt::cyan);
-    colors.push_back(Qt::gray);
-    colors.push_back(Qt::darkRed);
-    colors.push_back(Qt::darkGreen);
-    colors.push_back(Qt::darkBlue);
-    colors.push_back(Qt::darkYellow);
-    colors.push_back(Qt::darkMagenta);
-    colors.push_back(Qt::darkCyan);
-    colors.push_back(Qt::darkGray);
+    this->update();
 }
 
 void DiagramScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     Ball *ellipse = dynamic_cast<Ball*>(this->itemAt(event->scenePos()));
-    if(ellipse==NULL) {
-        moving=false;
-        if(pastEllipse!=NULL) {
-            pastEllipse->lighten();
-            this->update(pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
-        }
-        qDebug() << "There is no ball";
-        return;
+    switch(sceneMode) {
+        case SECOND_BALL_CHOSEN:
+            secondEllipse->lighten();
+            if(ellipse==secondEllipse) {
+                firstEllipse->lighten();
+                swap(secondEllipse,firstEllipse);
+                sceneMode=NOTHING_CHOSEN;
+                break;
+            }
+            if(firstEllipse->isCloseTo(ellipse)) {
+                secondEllipse = ellipse;
+                secondEllipse->darken();
+                break;
+            }
+            sceneMode=FIRST_BALL_CHOSEN;
+            break;
+        case FIRST_BALL_CHOSEN:
+            if(firstEllipse->isCloseTo(ellipse)) {
+                secondEllipse=ellipse;
+                secondEllipse->darken();
+                sceneMode=SECOND_BALL_CHOSEN;
+                break;
+            }
+            firstEllipse->lighten();
+            sceneMode=NOTHING_CHOSEN;
+            break;
+        case NOTHING_CHOSEN:
+            if(ellipse!=NULL) {
+                firstEllipse=ellipse;
+                firstEllipse->darken();
+                sceneMode=FIRST_BALL_CHOSEN;
+            }
     }
-    update(ellipse->scenePos().x(),ellipse->scenePos().y(),RKULKI,RKULKI);
-    if(moving) {
-        pastEllipse->lighten();
-        this->update(pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
-        swap(ellipse,pastEllipse);
-        moving=false;
-    }
-    else {
-        qDebug() << "darking";
-        pastEllipse=ellipse;
-        pastEllipse->darken();
-        //pastEllipse->setBrush(QBrush(Qt::black));
-        this->update();//pastEllipse->scenePos().rx(),pastEllipse->scenePos().ry(),RKULKI,RKULKI);
-        moving=true;
-    }
+}
+void DiagramScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+    mousePressEvent(event);
 }
 
 void DiagramScene::swap(Ball *ellipse1, Ball *ellipse2)
 {
-    qDebug() << "swapuje" << ellipse1->scenePos().x() << "," << ellipse1->scenePos().y() << " " << ellipse2->scenePos().x()
-             << "," << ellipse2->scenePos().y();
-    QBrush temp = ellipse1->brush();
-    ellipse1->setBrush(ellipse2->brush());
-    ellipse2->setBrush(temp);
+    QPointF temp = ellipse1->scenePos();
+    ellipse1->setPos(ellipse2->scenePos());
+    ellipse2->setPos(temp);
     this->update(ellipse1->scenePos().rx(),ellipse1->scenePos().ry(),RKULKI,RKULKI);
     this->update(ellipse2->scenePos().rx(),ellipse2->scenePos().ry(),RKULKI,RKULKI);
+}
+
+void DiagramScene::createPixmaps()
+{
+    pixmaps.push_back(QPixmap("images/redball.jpg"));
+    pixmaps.push_back(QPixmap("images/greenball.jpg"));
+    pixmaps.push_back(QPixmap("images/blueball.jpg"));
+    pixmaps.push_back(QPixmap("images/yellowball.jpg"));
+    pixmaps.push_back(QPixmap("images/magentaball.jpg"));
+    pixmaps.push_back(QPixmap("images/cyanball.jpg"));
+    pixmaps.push_back(QPixmap("images/greyball.jpg"));
 }

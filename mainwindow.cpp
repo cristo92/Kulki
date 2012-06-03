@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     createActions();
     createMenuBar();
+    Ball::createPixmaps();
 
     scene = new DiagramScene(this);
     view = new QGraphicsView(scene);
@@ -13,10 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(this);
 
     QWidget *widget = new QWidget(this);
-    view->setMaximumHeight(6*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
-    view->setMaximumWidth(6*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
-    view->setMinimumHeight(6*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
-    view->setMinimumWidth(6*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
+    view->setMaximumHeight(7*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
+    view->setMaximumWidth(7*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
+    view->setMinimumHeight(7*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
+    view->setMinimumWidth(7*(RKULKI*2+ODLKULKI)+ODLKULKI*3);
     layout->addWidget(view);
     widget->setLayout(layout);
 
