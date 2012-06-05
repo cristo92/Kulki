@@ -8,7 +8,8 @@ class BallNormal : public Ball
 {
 public:
     explicit BallNormal(qreal x, qreal y, qreal w, qreal h, int myColor, int points, QPixmap pixmap, QGraphicsScene *scene=0);
-    bool isColor(QColor color){return true;}
+    bool compareColorWithoutRecursion(Ball *ball);
+    bool compareColor(Ball *ball);
     int sumPoints();
     int timesPoints();
     void updateAfterMove(){}

@@ -7,7 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
     createMenuBar();
     Ball::createPixmaps();
 
-    scene = new DiagramScene(this);
+    statusBarText = new QLabel(this);
+    statusBarText->setText("New game");
+    statusBar()->addWidget(statusBarText);
+
+    scene = new DiagramScene(this,statusBarText);
     view = new QGraphicsView(scene);
 
 
@@ -22,11 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
     widget->setLayout(layout);
 
     setCentralWidget(widget);
-
-
-    statusBarText = new QLabel(this);
-    statusBarText->setText("New game");
-    statusBar()->addWidget(statusBarText);
 }
 
 MainWindow::~MainWindow()
