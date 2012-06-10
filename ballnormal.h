@@ -6,13 +6,16 @@
 
 class BallNormal : public Ball
 {
+    Q_OBJECT
 public:
-    explicit BallNormal(qreal x, qreal y, qreal w, qreal h, int myColor, int points, QPixmap pixmap, QGraphicsScene *scene=0);
+    explicit BallNormal(qreal x, qreal y, qreal w, qreal h, int myColor, int points);
+    ~BallNormal(){}
     bool compareColorWithoutRecursion(Ball *ball);
     bool compareColor(Ball *ball);
     int sumPoints();
     int timesPoints();
     void updateAfterMove(){}
+
 private:
     int points;
 };

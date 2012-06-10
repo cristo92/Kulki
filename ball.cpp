@@ -1,27 +1,33 @@
 #include "ball.h"
 
-Ball::Ball(qreal x, qreal y, qreal w, qreal h, int myColor, QPixmap pixmap, QGraphicsScene *scene):
-    QGraphicsPixmapItem(pixmap, NULL, scene), myColor(myColor)
+Ball::Ball(qreal x, qreal y, qreal w, qreal h, int myColor):
+    QGraphicsWidget(), myColor(myColor), myPixmap(*pixmaps[myColor]), howFarToGround(0), removed(false)
 {
     this->setX(x);
     this->setY(y);
+    this->setPreferredHeight(RKULKI*2.0);
+    this->setPreferredWidth(RKULKI*2.0);
     this->setActive(true);
 }
 
+void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+    painter->drawPixmap(QRect(0.0,0.0,RKULKI*2.0,RKULKI*2.0),myPixmap,myPixmap.rect());
+}
+
 void Ball::createPixmaps() {
-    pixmaps[0]=new QPixmap("images/redball.jpg");
-    pixmaps[1]=new QPixmap("images/greenball.jpg");
-    pixmaps[2]=new QPixmap("images/blueball.jpg");
-    pixmaps[3]=new QPixmap("images/yellowball.jpg");
-    pixmaps[4]=new QPixmap("images/magentaball.jpg");
-    pixmaps[5]=new QPixmap("images/cyanball.jpg");
+    pixmaps[0]=new QPixmap("images/redball.gif");
+    pixmaps[1]=new QPixmap("images/greenball.gif");
+    pixmaps[2]=new QPixmap("images/blueball.gif");
+    pixmaps[3]=new QPixmap("images/yellowball.gif");
+    pixmaps[4]=new QPixmap("images/magentaball.gif");
+    pixmaps[5]=new QPixmap("images/cyanball.gif");
     pixmaps[6]=new QPixmap("images/greyball.jpg");
-    pixmaps[7]=new QPixmap("images/redballchosen.jpg");
-    pixmaps[8]=new QPixmap("images/greenballchosen.jpg");
-    pixmaps[9]=new QPixmap("images/blueballchosen.jpg");
-    pixmaps[10]=new QPixmap("images/yellowballchosen.jpg");
-    pixmaps[11]=new QPixmap("images/magentaballchosen.jpg");
-    pixmaps[12]=new QPixmap("images/cyanballchosen.jpg");
+    pixmaps[7]=new QPixmap("images/redballchosen.gif");
+    pixmaps[8]=new QPixmap("images/greenballchosen.gif");
+    pixmaps[9]=new QPixmap("images/blueballchosen.gif");
+    pixmaps[10]=new QPixmap("images/yellowballchosen.gif");
+    pixmaps[11]=new QPixmap("images/magentaballchosen.gif");
+    pixmaps[12]=new QPixmap("images/cyanballchosen.gif");
     pixmaps[13]=new QPixmap("images/greyballchosen.jpg");
 }
 bool Ball::isCloseTo(Ball *ellipse) {

@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewGameDialog</class>
+ <widget class="QDialog" name="NewGameDialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>456</width>
+    <height>415</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NewGameDialog</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Size</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="sizeSpinBox">
+       <property name="minimum">
+        <number>3</number>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Colors</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="colorsSpinBox">
+       <property name="minimum">
+        <number>3</number>
+       </property>
+       <property name="maximum">
+        <number>7</number>
+       </property>
+       <property name="value">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="aloneModeCheckBox">
+     <property name="text">
+      <string>Alone Mode</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Player 1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="player1Name"/>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="humanButton1">
+       <property name="text">
+        <string>Human</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="computerButton1">
+       <property name="text">
+        <string>Computer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Player 2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="player2Name"/>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="humanButton2">
+       <property name="text">
+        <string>Human</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="computerButton2">
+       <property name="text">
+        <string>Computer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Amount of Bonus Balls</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="bonusBallComboBox">
+       <item>
+        <property name="text">
+         <string>Few</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Normal</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lot</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Enormous</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="moreButton">
+       <property name="text">
+        <string>More</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>OK</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QCheckBox" name="jokerCheckBox">
+         <property name="text">
+          <string>Joker</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="jokerLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QCheckBox" name="cameleonCheckBox">
+         <property name="text">
+          <string>Cameleon</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="cameleonLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QCheckBox" name="doubleFunCheckBox">
+         <property name="text">
+          <string>Double Fun</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="doubleFunLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QCheckBox" name="skullCheckBox">
+         <property name="text">
+          <string>Skull</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="skullLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QCheckBox" name="clepsydraCheckBox">
+         <property name="text">
+          <string>Clepsydra</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="clepsydraLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>aloneModeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>player2Name</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>194</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aloneModeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>computerButton2</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aloneModeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>humanButton2</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>aloneModeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_2</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>jokerCheckBox</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>132</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>jokerLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cameleonCheckBox</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>79</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cameleonLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleFunCheckBox</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>212</x>
+     <y>343</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleFunLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>343</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>skullCheckBox</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>177</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>skullLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clepsydraCheckBox</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>moreButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>clepsydraLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>NewGameDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>431</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>NewGameDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>331</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
